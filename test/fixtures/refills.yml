@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full: false
+  l: 1.5
+  uah: 1.5
+  km: 1
+  l_na_100: 1.5
+  km_na_l: 1.5
+  ml_na_gal: 1.5
+  avg_uah_km: 1.5
+  avg_uah_l: 1.5
+
+two:
+  full: false
+  l: 1.5
+  uah: 1.5
+  km: 1
+  l_na_100: 1.5
+  km_na_l: 1.5
+  ml_na_gal: 1.5
+  avg_uah_km: 1.5
+  avg_uah_l: 1.5
