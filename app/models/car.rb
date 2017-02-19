@@ -1,6 +1,6 @@
 class Car < ApplicationRecord
 belongs_to :user
-has_many :refills
+has_many :refills, dependent: :destroy
 
 validates :name, presence: true
 validates :total_probig, length: {maximum: 12} 
