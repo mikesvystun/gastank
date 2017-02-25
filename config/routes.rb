@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :cars
+  resources :cars do
+    resources :refills
+  end
   get 'home/index'
 
   devise_for :users, controllers: {
