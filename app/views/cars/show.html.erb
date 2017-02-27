@@ -1,9 +1,39 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
-  <%= @car.name %>
+  <%= @car.name %> </br>
+  <%= @refills.inspect %> </br>
 </p>
+
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>До повного?</th>
+      <th>Літри</th>
+      <th>Пробіг</th>
+      <th>Вартість пального</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @refills.each do |refill| %>
+      <tr>
+        <td><%= refill.created_at %></td>
+        <td><%= refill.full %></td>
+        <td><%= refill.liters %></td>
+        <td><%= refill.probig %></td>
+        <td><%= refill.vartist %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
 
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>

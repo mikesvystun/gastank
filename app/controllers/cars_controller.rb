@@ -11,6 +11,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   # GET /cars/1.json
   def show
+    @refills = @car.refills
   end
 
   # GET /cars/new
