@@ -2,7 +2,6 @@
 <p>
   <strong>Name:</strong>
   <%= @car.name %> </br>
-  <%= @refills.inspect %> </br>
 </p>
 
 
@@ -12,19 +11,25 @@
       <th>Дата</th>
       <th>До повного?</th>
       <th>Літри</th>
-      <th>Пробіг</th>
+      <th>Пробіг від часу <br>останньої заправки</th>
+      <th>Пробіг від часу <br>останньої заправки до повного</th>
+      <th>Середній розхід</th>
       <th>Вартість пального</th>
+      <th>Ціна за літру</th>
     </tr>
   </thead>
 
   <tbody>
     <% @refills.each do |refill| %>
       <tr>
-        <td><%= refill.created_at %></td>
+        <td><%= refill.created_at.to_date %></td>
         <td><%= refill.full %></td>
         <td><%= refill.liters %></td>
         <td><%= refill.probig %></td>
+        <td><%= refill.probig_since_last_full %></td>
+        <td><%= refill.avg_rozhid %></td>
         <td><%= refill.vartist %></td>
+        <td><%= refill.avg_uah_l%></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,5 +40,5 @@
 
 
 
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>
+<%= link_to 'Назад до всіх машин', cars_path %>|
+<%= link_to 'Додати нову заправку', new_car_refill_path(@car)%>

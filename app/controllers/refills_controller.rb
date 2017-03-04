@@ -14,6 +14,7 @@ before_action :set_car
     @refill = Refill.new(refill_params)
     @refill.car_id = @car.id
 
+
   respond_to do |format|
     if @refill.save
       format.html { redirect_to @car, notice: "Refill added." }
