@@ -1,0 +1,37 @@
+<%= form_for(refill, url: car_refills_path(@car)) do |f| %>
+  <% if refill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(refill.errors.count, "error") %> prohibited this refill from being saved:</h2>
+
+      <ul>
+      <% refill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag :full, "Заправка до повного?" %>
+    <%= f.check_box :full, {}, true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :liters, "Залили літрів: "%>
+    <%= f.text_field :liters %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vartist, "Заплатили: "%>
+    <%= f.text_field :vartist %>
+  </div>
+
+  <div class="field">
+    <%= f.label :probig, "Загальний пробіг машини: "%>
+    <%= f.text_field :probig %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
