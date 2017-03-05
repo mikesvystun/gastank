@@ -36,7 +36,7 @@ before_action :set_car
    
 
   def refill_params
-    params.require(:refill).permit(:liters, :vartist, :probig, :full, :gas_mark, :gas_station)
+    params.require(:refill).permit(:liters, :vartist, :probig, :full, :gasmark_id, :gasstation_id)
   end
 
 

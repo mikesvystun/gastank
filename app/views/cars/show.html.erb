@@ -34,8 +34,8 @@
         <td><%= refill.km_na_l %></td>
         <td><%= refill.ml_na_ga %></td>
         <td><%= refill.avg_uah_km %></td>
-        <td><%= refill.gas_mark %></td>
-        <td><%= refill.gas_station %></td>
+        <td><%= refill.gasmark&.gas_mark %></td>
+        <td><%= refill.gasstation&.gas_station %></td>
       </tr>
     <% end %>
   </tbody>

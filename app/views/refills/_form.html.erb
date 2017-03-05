@@ -33,13 +33,13 @@
 
   <div class="field">
     <%= f.label :gas_mark, "Марка бензину: "%>
-    <%= f.text_field :gas_mark %>
+    <%= f.collection_select :gasmark_id, Gasmark.all, :id, :gas_mark %>
   </div>
 
 
   <div class="field">
     <%= f.label :gas_station, "Заправка: "%>
-    <%= f.text_field :gas_station %>
+    <%= f.collection_select :gasstation_id, Gasstation.all, :id, :gas_station %>
   </div>
 
   <div class="actions">

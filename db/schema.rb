@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219125452) do
+ActiveRecord::Schema.define(version: 20170305154203) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "name"
@@ -23,21 +23,29 @@ ActiveRecord::Schema.define(version: 20170219125452) do
     t.datetime "updated_at",                            null: false
   end
 
+  create_table "gasmarks", force: :cascade do |t|
+    t.string "gas_mark"
+  end
+
+  create_table "gasstations", force: :cascade do |t|
+    t.string "gas_station"
+  end
+
   create_table "refills", force: :cascade do |t|
     t.boolean  "full"
-    t.decimal  "liters",      precision: 9, scale: 2
-    t.decimal  "vartist",     precision: 9, scale: 2
+    t.decimal  "liters",        precision: 9, scale: 2
+    t.decimal  "vartist",       precision: 9, scale: 2
     t.integer  "probig"
-    t.decimal  "avg_rozhid",  precision: 9, scale: 2
-    t.decimal  "km_na_l",     precision: 9, scale: 2
-    t.decimal  "ml_na_ga",    precision: 9, scale: 2
-    t.decimal  "avg_uah_km",  precision: 9, scale: 2
-    t.decimal  "avg_uah_l",   precision: 9, scale: 2
+    t.decimal  "avg_rozhid",    precision: 9, scale: 2
+    t.decimal  "km_na_l",       precision: 9, scale: 2
+    t.decimal  "ml_na_ga",      precision: 9, scale: 2
+    t.decimal  "avg_uah_km",    precision: 9, scale: 2
+    t.decimal  "avg_uah_l",     precision: 9, scale: 2
     t.integer  "car_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "gas_station"
-    t.string   "gas_mark"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "gasstation_id"
+    t.integer  "gasmark_id"
   end
 
   create_table "users", force: :cascade do |t|
