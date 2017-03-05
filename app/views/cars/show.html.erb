@@ -9,27 +9,29 @@
   <thead>
     <tr>
       <th>Дата</th>
-      <th>До повного?</th>
       <th>Літри</th>
-      <th>Пробіг від часу <br>останньої заправки</th>
-      <th>Пробіг від часу <br>останньої заправки до повного</th>
-      <th>Середній розхід</th>
-      <th>Вартість пального</th>
-      <th>Ціна за літру</th>
+      <th>Вартість</th>
+      <th>Пробіг</th>
+      <th>Пробіг від останньої<br>повної заправки</th>
+      <th>Середній розхід<br>(л на 100 км)</th>
+      <th>Км/<br>літр</th>
+      <th>Миль/<br>галон</th>
+      <th>Ціна за<br>кілометр</th>
     </tr>
   </thead>
 
   <tbody>
     <% @refills.each do |refill| %>
-      <tr>
+      <tr class="<%= refill_row_class(refill) %>">
         <td><%= refill.created_at.to_date %></td>
-        <td><%= refill.full %></td>
         <td><%= refill.liters %></td>
+        <td><%= refill.vartist %></td>
         <td><%= refill.probig %></td>
         <td><%= refill.probig_since_last_full %></td>
         <td><%= refill.avg_rozhid %></td>
-        <td><%= refill.vartist %></td>
-        <td><%= refill.avg_uah_l%></td>
+        <td><%= refill.km_na_l %></td>
+        <td><%= refill.ml_na_ga %></td>
+        <td><%= refill.avg_uah_km %></td>
       </tr>
     <% end %>
   </tbody>
