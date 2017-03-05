@@ -3,8 +3,17 @@ belongs_to :car
 
 validates :liters, presence: true, numericality: true, length: {maximum: 12}
 validates :vartist, presence: true, numericality: true, length: {maximum: 12}
-validates :probig, presence: true, numericality: true, length: {maximum: 12}
+validates :probig, presence: true, numericality: {:greater_than_or_equal_to => :current_probig }, length: {maximum: 12}
+validates :full, inclusion: { in: [true], message: "Перша заправка мусить бути до повного" }, if: :first_refill? 
 
+  def first_refill?
+    !self.car.refills.any?
+  end
+
+  def current_probig
+    return 0 unless self.car.refills.last.present?
+    self.car.refills.last.probig
+  end
 
 
   def probig_since_last_full
@@ -62,11 +71,11 @@ validates :probig, presence: true, numericality: true, length: {maximum: 12}
 private
 
 def last_full
-    @previous_full_refill = self.car.refills.where('id < ? AND full = ?', self.id, true).order(id: :asc).last
+  @previous_full_refill = self.car.refills.where('id < ? AND full = ?', self.id, true).order(id: :asc).last
 end
 
 def since_last_full(n)
-self.car.refills.where('id <= ? AND id > ?', self.id, @previous_full_refill.id).sum(n) 
+  self.car.refills.where('id <= ? AND id > ?', self.id, @previous_full_refill.id).sum(n)
 end
 
 

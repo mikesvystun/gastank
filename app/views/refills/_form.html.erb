@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= label_tag :full, "Заправка до повного?" %>
-    <%= f.check_box :full, {}, true %>
+    <%= f.check_box :full, checked: !@refills.any? %>
   </div>
 
   <div class="field">
@@ -29,6 +29,17 @@
   <div class="field">
     <%= f.label :probig, "Загальний пробіг машини: "%>
     <%= f.text_field :probig %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gas_mark, "Марка бензину: "%>
+    <%= f.text_field :gas_mark %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :gas_station, "Заправка: "%>
+    <%= f.text_field :gas_station %>
   </div>
 
   <div class="actions">

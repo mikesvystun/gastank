@@ -1,7 +1,6 @@
 class RefillsController < ApplicationController
 before_action :authenticate_user!
 before_action :set_car
-# before_action :set_refill
 
   #GET /car/:id/refills/new
   def new
@@ -28,6 +27,7 @@ before_action :set_car
 
   def set_car
      @car = current_user.cars.find(params[:car_id])
+     @refills = @car.refills
   end
 
 #  def set_refill
@@ -36,7 +36,7 @@ before_action :set_car
    
 
   def refill_params
-    params.require(:refill).permit(:liters, :vartist, :probig, :full)
+    params.require(:refill).permit(:liters, :vartist, :probig, :full, :gas_mark, :gas_station)
   end
 
 
