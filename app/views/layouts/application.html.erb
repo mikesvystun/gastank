@@ -40,8 +40,7 @@
               <li><%= link_to "Дадати іншу машину", new_car_path %></li>
               <li role="separator" class="divider"></li>
               <li> <%= link_to("Вийти", destroy_user_session_path, method: :delete) %> </li>
-            </
-          </li>
+            </li>
           <% else  %>
             <li><a href="<%= new_user_session_path %>">Ввійти</a></li>
           <% end  %>
