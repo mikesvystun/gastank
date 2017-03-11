@@ -31,12 +31,16 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
             <ul class="dropdown-menu">
-        <!--  <li><a href="#">Action</a></li>  -->
-        <!--  <li><a href="#">Another action</a></li> -->
-              <li><a href="<%= cars_path %>">Всі машини</a></li>
+              <% if current_user.cars.count > 1 then  %>
+                <% current_user.cars.each do |car| %>
+                  <li><%= link_to " - #{car.name}", car_path(car) %></li>
+                <% end %>
+                <li role="separator" class="divider"></li>
+              <% end %>         
+              <li><%= link_to "Дадати іншу машину", new_car_path %></li>
               <li role="separator" class="divider"></li>
               <li> <%= link_to("Вийти", destroy_user_session_path, method: :delete) %> </li>
-            </ul>
+            </
           </li>
           <% else  %>
             <li><a href="<%= new_user_session_path %>">Ввійти</a></li>

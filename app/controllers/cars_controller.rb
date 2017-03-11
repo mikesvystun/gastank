@@ -6,6 +6,8 @@ class CarsController < ApplicationController
   # GET /cars.json
   def index
     @cars = current_user.cars
+    car = current_user.cars.last
+    redirect_to car if @cars.count == 1
   end
 
   # GET /cars/1
