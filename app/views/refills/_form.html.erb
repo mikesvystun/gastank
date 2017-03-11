@@ -1,10 +1,10 @@
-<%= form_for(refill, url: car_refills_path(@car)) do |f| %>
-  <% if refill.errors.any? %>
+<%= form_for(@refill, url: car_refill_path(@car)) do |f| %>
+  <% if @refill.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(refill.errors.count, "error") %> prohibited this refill from being saved:</h2>
+      <h2><%= pluralize(@refill.errors.count, "error") %> prohibited this refill from being saved:</h2>
 
       <ul>
-      <% refill.errors.full_messages.each do |message| %>
+      <% @refill.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

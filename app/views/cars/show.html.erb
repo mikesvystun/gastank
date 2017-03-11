@@ -34,8 +34,9 @@
         <td><%= refill.km_na_l %></td>
         <td><%= refill.ml_na_ga %></td>
         <td><%= refill.avg_uah_km %></td>
-        <td><%= refill.gasmark&.gas_mark %></td>
-        <td><%= refill.gasstation&.gas_station %></td>
+        <td><%= refill.gasmark.gas_mark %></td>
+        <td><%= refill.gasstation.gas_station %></td>
+        <td class="<%= refill_edit_class(refill) %>"><%= link_to 'Edit', edit_car_refill_path(@car, refill) %></td>
       </tr>
     <% end %>
   </tbody>
