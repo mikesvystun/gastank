@@ -74,7 +74,7 @@ validates :full, inclusion: { in: [true], message: "Перша заправка 
 private
 
 def last_full
-  @previous_full_refill = self.car.refills.where('id < ? AND full = ?', self.id, true).order(id: :asc).last
+  @previous_full_refill = self.car.refills.where('id < ? AND full is true', self.id).order(id: :asc).last
 end
 
 def since_last_full(n)
