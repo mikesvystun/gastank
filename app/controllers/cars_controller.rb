@@ -13,7 +13,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   # GET /cars/1.json
   def show
-    @refills = car.refills.order(id: :desc)
+    @refills = @car.refills.order(id: :desc)
   end
 
   # GET /cars/new
