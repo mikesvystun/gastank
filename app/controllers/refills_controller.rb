@@ -1,6 +1,6 @@
 class RefillsController < ApplicationController
 before_action :authenticate_user!
-before_action :set_car, only: [:show, :edit, :update, :destroy]
+before_action :set_car, only: [:show, :edit, :update, :destroy, :create, :new]
 before_action :set_refill, only: [:show, :edit, :update, :destroy]
 
   #GET /car/:id/refills/new

@@ -7,14 +7,14 @@ devise :database_authenticatable, :registerable,
 has_many :cars, dependent: :destroy
 has_many :authentications, dependent: :destroy
 
-validates :name, presence: true, length: {maximum: 9}
+validates :name, presence: true
 
 
   def self.from_omniauth(auth)
     @authentication = Authentication.from_omniauth(auth)
     unless @authentication.user.present?
       @authentication.user = User.where(email: auth.info.email).first_or_create do |user|
-         user.name = auth.info.name
+         user.name = auth.info.first_name
          user.password = Devise.friendly_token
          user.confirmed_at = Time.now
       end

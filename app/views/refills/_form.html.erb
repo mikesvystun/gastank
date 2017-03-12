@@ -1,4 +1,4 @@
-<%= form_for(@refill, url: car_refill_path(@car)) do |f| %>
+<%= form_for([car, refill]) do |f| %>
   <% if @refill.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@refill.errors.count, "error") %> prohibited this refill from being saved:</h2>
