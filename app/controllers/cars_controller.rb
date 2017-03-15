@@ -14,6 +14,9 @@ class CarsController < ApplicationController
   # GET /cars/1.json
   def show
     @refills = @car.refills.order(id: :desc)
+    if current_user.id != @car.user_id
+      redirect_to cars_path
+    end
   end
 
   # GET /cars/new
