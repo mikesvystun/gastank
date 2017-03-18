@@ -42,6 +42,11 @@
     <%= f.collection_select :gasstation_id, Gasstation.all, :id, :gas_station %>
   </div>
 
+  <div class="field">
+    <%= f.label :stan, "Стиль їзди: "%>
+    <%= f.collection_select :stan_id, Stan.all, :id, :stan %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

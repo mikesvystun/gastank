@@ -53,7 +53,7 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
   end
 
   def refill_params
-    params.require(:refill).permit(:liters, :vartist, :probig, :full, :gasmark_id, :gasstation_id)
+    params.require(:refill).permit(:liters, :vartist, :probig, :full, :gasmark_id, :gasstation_id, :stan_id)
   end
 
 
