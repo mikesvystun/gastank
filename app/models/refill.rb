@@ -2,6 +2,7 @@ class Refill < ApplicationRecord
 belongs_to :car
 belongs_to :gasstation
 belongs_to :gasmark
+belongs_to :stan
 
 
 validates :liters, presence: true, numericality: true, length: {maximum: 12}

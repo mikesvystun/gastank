@@ -19,6 +19,7 @@
       <th>Ціна за<br>кілометр</th>
       <th>Марка<br>бензину</th>
       <th>Заправна<br>станція</th>
+      <th>Стиль</th>
     </tr>
   </thead>
 
@@ -36,6 +37,7 @@
         <td><%= refill.avg_uah_km %></td>
         <td><%= refill.gasmark.gas_mark %></td>
         <td><%= refill.gasstation.gas_station %></td>
+        <td><%= refill.stan.stan %></td>
         <td class="<%= refill_edit_class(refill) %>"><%= link_to 'Edit', edit_car_refill_path(@car, refill) %></td>
       </tr>
     <% end %>
