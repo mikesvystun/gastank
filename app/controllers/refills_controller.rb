@@ -40,6 +40,14 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
       end
     end
   end
+  
+  #DELETE /cars/1/refills/1
+  def destroy
+    @refill.destroy
+    respond_to do |format|
+      format.html { redirect_to car_path(@car) }
+    end
+  end
 
   private
 
