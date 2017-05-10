@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318204218) do
+ActiveRecord::Schema.define(version: 20170510190454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170318204218) do
     t.integer  "gasstation_id"
     t.integer  "gasmark_id"
     t.integer  "stan_id"
+    t.text     "comment"
   end
 
   create_table "stans", force: :cascade do |t|
