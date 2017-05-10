@@ -34,7 +34,7 @@
         <td><%= refill.gasmark.gas_mark %></td>
         <td><%= refill.gasstation.gas_station %></td>
         <td><%= refill.stan.stan %></td>
-        <td><%= refill.comment%></td>
+        <td><%= refill.comment.to_s%></td>
         <td class="<%= refill_edit_class(refill) %>"><%= link_to 'Edit', edit_car_refill_path(@car, refill) %></td>
         <td class="<%= refill_edit_class(refill) %>"><%= link_to 'Delete', car_refill_path(@car, refill), method: :delete %></td>
       </tr>
