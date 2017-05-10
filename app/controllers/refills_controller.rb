@@ -3,50 +3,38 @@ before_action :authenticate_user!
 before_action :set_car, only: [:show, :edit, :update, :destroy, :create, :new]
 before_action :set_refill, only: [:show, :edit, :update, :destroy]
 
-  #GET /car/:id/refills/new
   def new
     @refill = Refill.new 
   end
 
 
-  #POST /car/:id/refills
   def create
     @refill = Refill.new(refill_params)
     @refill.car_id = @car.id
 
-
-  respond_to do |format|
     if @refill.save
-      format.html { redirect_to @car, notice: "Refill added." }
+      redirect_to @car, notice: "Refill added."
     else 
-      format.html { render :new } 
+      render :new, notice: 'Something went wrong, please try again.' 
     end
-  end  
   end
 
 
-  #GET /cars/1/refills/1/edit
   def edit
   end 
 
 
-  #PATCH/PUT /cars/1/refills/1
   def update
-    respond_to do |format|
-      if @refill.update(refill_params)
-        format.html { redirect_to @car, notice: 'Refill updated'}
-      else
-        format.html { render :edit }
+    if @refill.update(refill_params)
+      redirect_to @car, notice: 'Refill updated'
+    else
+      render :edit, notice: 'Something went wrong, please try again.' 
       end
-    end
   end
   
-  #DELETE /cars/1/refills/1
   def destroy
     @refill.destroy
-    respond_to do |format|
-      format.html { redirect_to car_path(@car) }
-    end
+    redirect_to car_path(@car) 
   end
 
   private
