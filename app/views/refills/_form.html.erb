@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= label_tag :full, "Заправка до повного?" %>
-    <%= f.check_box :full, checked: (f.object.new_record? || @refill.full || !@refills.any?) %>
+    <%= f.check_box :full, checked: (f.object.new_record? || @refill.full) %>
   </div>
 
   <div class="field">
