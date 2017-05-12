@@ -27,7 +27,7 @@ validates :full, inclusion: { in: [true], message: "Перша заправка 
     last_full
     return "start" unless @previous_full_refill.present?
     
-    self.probig - @previous_full_refill.probig   
+    self.probig - @previous_full_refill.probig 
     
   end
   
