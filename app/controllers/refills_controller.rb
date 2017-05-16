@@ -5,14 +5,29 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
 
   def new
     @refill = Refill.new 
+    @next_refill = Refill.new
   end
 
 
   def create
     @refill = Refill.new(refill_params)
     @refill.car_id = @car.id
+    @refill.overliters = params[:overliters].to_d
 
-    if @refill.save
+    unless params[:overliters].empty?
+    @next_refill = Refill.new(refill_params)
+    @next_refill.liters = @refill.overliters
+    @next_refill.vartist = @refill.overliters_vartist
+    @next_refill.full = false
+    @next_refill.probig = nil
+    @next_refill.car_id = @car.id
+    end
+
+    @refill.vartist -= @refill.overliters_vartist
+    @refill.liters -= @refill.overliters
+
+    if @refill.save then
+      @next_refill.save unless @next_refill.nil? 
       redirect_to @car, notice: "Refill added."
     else 
       render :new, notice: 'Something went wrong, please try again.' 
@@ -35,7 +50,7 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
   def destroy
     @refill.destroy
     redirect_to car_path(@car) 
-  end
+end
 
   private
 
@@ -49,7 +64,7 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
   end
 
   def refill_params
-    params.require(:refill).permit(:liters, :vartist, :probig, :full, :gasmark_id, :gasstation_id, :stan_id, :comment)
+    params.require(:refill).permit(:liters, :vartist, :probig, :full, :gasmark_id, :gasstation_id, :stan_id, :comment, :overliters)
   end
 
 
