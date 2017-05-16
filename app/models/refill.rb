@@ -48,6 +48,14 @@ validates :full, inclusion: { in: [true], message: "Перша заправка 
   end
 
 
+
+  def overliters_vartist
+    if !self.overliters.nil?
+      self.overliters / self.liters * self.vartist
+    end
+  end
+
+
 private
 
   def last_full

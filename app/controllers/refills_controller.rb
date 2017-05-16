@@ -12,17 +12,22 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
   def create
     @refill = Refill.new(refill_params)
     @refill.car_id = @car.id
+    @refill.overliters = params[:overliters].to_d
 
-    unless params[:overliters].nil?
+    unless params[:overliters].empty?
     @next_refill = Refill.new(refill_params)
-    @next_refill.liters = params[:overliters]
-    @next_refill.vartist = 10
+    @next_refill.liters = @refill.overliters
+    @next_refill.vartist = @refill.overliters_vartist
     @next_refill.full = false
+    @next_refill.probig = nil
     @next_refill.car_id = @car.id
     end
 
+    @refill.vartist -= @refill.overliters_vartist
+    @refill.liters -= @refill.overliters
+
     if @refill.save then
-      @next_refill.save
+      @next_refill.save unless @next_refill.nil? 
       redirect_to @car, notice: "Refill added."
     else 
       render :new, notice: 'Something went wrong, please try again.' 
