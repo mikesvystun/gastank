@@ -11,14 +11,15 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
 
   def create
     @refill = Refill.new(refill_params)
+    @refill.car_id = @car.id
 
+    unless params[:overliters].nil?
     @next_refill = Refill.new(refill_params)
-    @next_refill.liters = @refill.overliters
+    @next_refill.liters = params[:overliters]
     @next_refill.vartist = 10
     @next_refill.full = false
-
-    @refill.car_id = @car.id
     @next_refill.car_id = @car.id
+    end
 
     if @refill.save then
       @next_refill.save
