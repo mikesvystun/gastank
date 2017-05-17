@@ -50,7 +50,7 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
   def destroy
     @refill.destroy
     redirect_to car_path(@car) 
-end
+  end
 
   private
 
