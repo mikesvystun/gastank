@@ -20,18 +20,14 @@ validates :full, inclusion: { in: [true], message: "Перша заправка 
   end
  
   def last_known_probig
-    if self.car.refills.where('refills.probig IS NOT NULL').order(probig: :asc).empty?
-      return 0
-    else
-      self.car.refills.where('refills.probig IS NOT NULL').order(probig: :asc).last.probig
-    end
+    self.car.refills.where('refills.probig IS NOT NULL').order(probig: :asc).last.try(:probig) || 0
   end
 
   def probig_since_last_full
     return '-' unless full 
     return "start" if view_first_refill?
     last_full
-    self.probig - @previous_full_refill.probig
+    self.probig - last_full.probig
   end
   
   def avg_rozhid
@@ -59,14 +55,11 @@ validates :full, inclusion: { in: [true], message: "Перша заправка 
 private
 
   def last_full
-    @previous_full_refill = self.car.refills.where('id < ? AND refills.full IS TRUE', self.id).order(id: :asc).last
-    if self.car.refills.where('id < ? AND refills.full IS TRUE', self.id).empty?
-      @previous_full_refill = self
-    end
+    self.car.refills.where('id < ? AND refills.full IS TRUE', self.id).order(id: :asc).last ||= self
   end
 
   def since_last_full(n)
-    self.car.refills.where('id <= ? AND id > ?', self.id, @previous_full_refill.id).sum(n)
+    self.car.refills.where('id <= ? AND id > ?', self.id, last_full.id).sum(n)
   end
 
   def view_first_refill?
@@ -80,7 +73,7 @@ end
 #  def km_na_l
 #    return '-' unless full
 #    last_full
-#    return "start" unless @previous_full_refill.present?
+#    return "start" unless last_full.present?
 #
 #    (probig_since_last_full / since_last_full(:liters)).round(2)
 #  end

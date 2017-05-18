@@ -5,7 +5,6 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
 
   def new
     @refill = Refill.new 
-    @next_refill = Refill.new
   end
 
 
@@ -26,7 +25,7 @@ before_action :set_refill, only: [:show, :edit, :update, :destroy]
     @refill.vartist -= @refill.overliters_vartist
     @refill.liters -= @refill.overliters
 
-    if @refill.save then
+    if @refill.save 
       @next_refill.save unless @next_refill.nil? 
       redirect_to @car, notice: "Refill added."
     else 
