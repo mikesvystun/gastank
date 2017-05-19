@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.full-row {
- td {
-    font-weight: 900;
-  }
+.clear-b {
+  background-color: transparent !important;  
 }
 
+.pull-right .btn {
+  margin-bottom: 30px;
+}

@@ -1,8 +1,10 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @car.name %> </br>
-</p>
+<div class="row">
+    <strong>Name:</strong> <%= @car.name %> </br>
+  <div class="pull-right">
+    <button type="button" class="btn"> <%= link_to 'Додати нову заправку', new_car_refill_path(@car)%></button>
+  </div>
+</div>
 
 
 <table class = "table">
@@ -45,7 +47,3 @@
 <br>
 
 
-
-
-<%= link_to 'Назад до всіх машин', cars_path %>|
-<%= link_to 'Додати нову заправку', new_car_refill_path(@car)%>
