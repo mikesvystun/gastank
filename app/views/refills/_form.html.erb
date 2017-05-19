@@ -52,6 +52,13 @@
     <%= f.text_area :comment %>
   </div>
 
+  <% if @refill.new_record? %>
+  <div class="field">
+    <%= label_tag :overliters, "Перелили: "%>
+    <%= text_field_tag :overliters %>
+  </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
