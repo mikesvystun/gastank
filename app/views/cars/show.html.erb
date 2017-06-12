@@ -1,9 +1,9 @@
 
 <div class="row">
-    <strong>Name:</strong> <%= @car.name %> </br>
-  <div class="pull-right">
-    <button type="button" class="btn"> <%= link_to 'Додати нову заправку', new_car_refill_path(@car)%></button>
-  </div>
+  <strong>Name:</strong> <%= @car.name %> </br>
+  <%= link_to 'Додати нову заправку', new_car_refill_path(@car), class: 'button' %>
+  <%= link_to 'Редагувати останню заправку', edit_car_refill_path(@car, @last_refill), class: 'button' %>
+  <%= link_to 'Видалити останню заправку', car_refill_path(@car, @last_refill), method: :delete, class: 'button'  %>
 </div>
 
 
@@ -37,8 +37,6 @@
         <td><%= refill.gasstation.gas_station %></td>
         <td><%= refill.stan.stan %></td>
         <td><%= refill.comment %></td>
-        <td class="<%= refill_edit_class(refill) %>"><%= link_to 'Edit', edit_car_refill_path(@car, refill) %></td>
-        <td class="<%= refill_edit_class(refill) %>"><%= link_to 'Delete', car_refill_path(@car, refill), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

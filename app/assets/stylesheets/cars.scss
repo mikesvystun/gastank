@@ -2,10 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.clear-b {
-  background-color: transparent !important;  
+
+
+.button, .button:hover {
+  float: right;
+  background: #508abc;
+  color: white;
+  text-decoration: none; 
 }
 
-.pull-right .btn {
-  margin-bottom: 30px;
+.button + .button {
+  margin-right: 0.5em;
 }
