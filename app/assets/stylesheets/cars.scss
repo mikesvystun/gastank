@@ -1,16 +1,3 @@
 // Place all the styles related to the Cars controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-
-.button, .button:hover {
-  float: right;
-  background: #508abc;
-  color: white;
-  text-decoration: none; 
-}
-
-.button + .button {
-  margin-right: 0.5em;
-}
