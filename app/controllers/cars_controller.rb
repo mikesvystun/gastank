@@ -17,6 +17,7 @@ class CarsController < ApplicationController
     if current_user.id != @car.user_id
       redirect_to cars_path
     end
+    @last_refill = @car.refills.order(id: :desc).first
   end
 
   # GET /cars/new
