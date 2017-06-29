@@ -1,11 +1,11 @@
 module RefillsHelper
 def refill_row_class(refill)
-  refill.full ? "full-row" : "" 
+  refill.full ? "success" : "" 
 end
 
 
 def refill_edit_class(refill)
-  refill.id != @car.refills.last.id ? "hidden" : "" 
+  refill.id != @car.refills.last.id ? "hidden" : "clear-b" 
 end
 
 end

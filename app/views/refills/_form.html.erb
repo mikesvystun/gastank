@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= label_tag :full, "Заправка до повного?" %>
+    <%= f.label :full, "Заправка до повного?" %>
     <%= f.check_box :full, checked: (f.object.new_record? || @refill.full) %>
   </div>
 
@@ -48,16 +48,21 @@
   </div>
 
   <div class="field">
-    <%= f.label :comment, "Додaтковий коментар: "%>
-    <%= f.text_area :comment %>
+    <%= label_tag :overfill, "Перелили?" %>
+    <%= check_box_tag :overfill %>
   </div>
 
   <% if @refill.new_record? %>
-  <div class="field">
-    <%= label_tag :overliters, "Перелили: "%>
+  <div class="field" id="overlitersField">
+    <%= label_tag :overliters, "Перелили:"%>
     <%= text_field_tag :overliters %>
   </div>
   <% end %>
+
+  <div class="field">
+    <%= f.label :comment, "Додaтковий коментар: "%>
+    <%= f.text_area :comment %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
