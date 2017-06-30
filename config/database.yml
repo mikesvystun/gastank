@@ -8,4 +8,9 @@ development:
   password: 12345
   host: localhost
 
+test:
+  database: gastanktest
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
 
